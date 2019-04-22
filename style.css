@@ -56,7 +56,7 @@ img {
     display: grid;
     grid-gap: 1rem;
     grid-template-areas:
-        "search-field search-field search-icon"
+        "search-field search-field search-field search-field search-icon"
 }
 
 .search-field {
@@ -67,11 +67,60 @@ img {
 
 .search-icon {
     grid-area: search-icon;
-    width: 2rem;
 }
 
 .fas {
     justify-content: center;
     display: grid;
     color: var(--black);
+}
+
+/* .resDisplay */
+.resDisplay {
+    color: whitesmoke;
+    display: grid;
+    grid-template-columns: minmax(400px, 1fr);
+    grid-gap: 1.2rem;
+    justify-items: center;
+    padding: 15px 20px;
+    border: 1px solid whitesmoke;
+}
+
+.resDisplay p {
+    text-align: justify;
+}
+
+/* .season-list */
+.season-list {
+    display: grid;
+    justify-self: start;
+}
+
+/* episode-list */
+.episode-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.left h5 {
+    background: rgba(0,0,0,.65);
+    position: absolute;
+    padding: 5px;
+}
+
+.left img {
+    max-width: 90%;
+}
+
+.right {
+    max-width: 100%;
+}
+
+.right h4 {
+    font-size: 14px;
+    margin-top: -0.5rem;
+}
+
+.right p {
+    font-size: 12px;
 }
