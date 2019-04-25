@@ -63,6 +63,7 @@ img {
     grid-area: search-field;
     font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
+    padding: 0 5px;
 }
 
 .search-icon {
@@ -77,16 +78,22 @@ img {
 
 /* .resDisplay */
 .resDisplay {
-    color: whitesmoke;
     display: grid;
     grid-template-columns: minmax(400px, 1fr);
     grid-gap: 1.2rem;
+}
+
+.showBorder {
+    color: whitesmoke;
+    display: grid;
     justify-items: center;
     padding: 15px 20px;
     border: 1px solid whitesmoke;
 }
 
-.resDisplay p {
+.resDisplay h2, .resDisplay p {
+    margin-top: var(--spacing);
+    --spacing: 15px;
     text-align: justify;
 }
 
