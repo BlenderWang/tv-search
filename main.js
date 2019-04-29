@@ -8,21 +8,22 @@ function searchTv() {
         .then(data => {
             const episodes = data["_embedded"].episodes // arrary
             // console.log(episodes);
-            const list = document.createElement('div')
-            list.classList.add('episode-list', 'hide')
-            list.innerHTML = episodes.map(episode => `
-                <h3 class="season">Season ${episode.season}</h3>
-                <div class="season-content">
-                    <ul class="content-list">
-                        <li>
-                            <h4 class="ep">Episode ${episode.number}</h4>
-                            <div class="ep-content">
-                                ${episode.image ? `<img src="${episode.image.medium}" alt="">` : ''}
-                                <h4 class="name">${episode.name}</h4>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+            const accordion = document.createElement('div')
+            accordion.classList.add('episode-list', 'hide', 'accordion')
+            const accordionList = document.createElement('ul')
+            accordionList.classList.add('accordion-list')
+            accordion.appendChild(accordionList)
+
+            accordionList.innerHTML = episodes.map(episode => `
+                    <li class="accordion-item">
+                        <a href="#" class="accordion-title">
+                            <span class="ep">Season ${episode.season} Episode ${episode.number}</span>
+                        </a>
+                        <div class="ep-content">
+                            ${episode.image ? `<img src="${episode.image.medium}" alt="">` : ''}
+                            <h4 class="name">${episode.name}</h4>
+                        </div>
+                    </li>
                 `
             ).join('')
 
@@ -35,15 +36,34 @@ function searchTv() {
                 <br>
                 <button type="button" class="show-episodes">Details</button>
             `
-            showBorder.appendChild(list)
+            showBorder.appendChild(accordion)
             resDisplay.appendChild(showBorder)
 
             const showBtn = document.querySelector('.show-episodes')
             showBtn.addEventListener('click', () => {
-                list.classList.toggle('hide')
+                accordion.classList.toggle('hide')
             })
+
+            const accordionTitles = accordionList.querySelectorAll('.accordion-title')
+            for (let i = 0; i < accordionTitles.length; i++) {
+                accordionTitles[i].addEventListener('click', toggleContent);
+            }
         })
         .catch(err => console.log(err))
+}
+
+function toggleContent(e) {
+    e.preventDefault()
+    const content = this.parentNode.querySelector('.ep-content')
+    const contents = this.parentNode.parentNode.querySelectorAll('.ep-content')
+
+    for(let i = 0; i < contents.length; i++) {
+        const isActive = contents[i].classList.contains('is-active')
+        const isSame = !(contents[i] === content)
+
+        if(isActive && isSame) contents[i].classList.remove('is-active')
+    }
+    content.classList.toggle('is-active')
 }
 
 searchBtn.addEventListener('click', (e) => {
