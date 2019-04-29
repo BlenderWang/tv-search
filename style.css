@@ -32,6 +32,7 @@ button {
     background: var(--yellow);
     border: 1px solid var(--black);
     padding: 10px;
+    cursor: pointer;
 }
 
 button:focus {
@@ -89,6 +90,7 @@ img {
     justify-items: center;
     padding: 15px 20px;
     border: 1px solid whitesmoke;
+    border-radius: 2px;
 }
 
 .resDisplay h2 {
@@ -105,43 +107,43 @@ img {
     color: indianred;
 }
 
-/* .season-list */
-.season-list {
-    display: flex;
-    justify-self: start;
-}
-
-.season-list a {
-    color: var(--black);
-}
-
 /* episode-list */
 .episode-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(220px, 1fr);
     grid-gap: 10px;
+    background: rgba(1, 1, 1, .15);
+    width: 100%;
+    border-radius: 5px;
     margin-top: 1rem;
 }
 
-.left h5 {
-    background: rgba(0,0,0,.65);
-    position: absolute;
-    padding: 5px;
+.hide {
+    display: none;
 }
 
-.left img {
-    max-width: 90%;
+.season {
+    color: indianred;
+    padding: 20px 0 0 15px;
 }
 
-.right {
-    max-width: 100%;
+.content-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.right h4 {
-    font-size: 14px;
-    margin-top: -0.5rem;
+.content-list h4 {
+    padding-left: 15px;
 }
 
-.right p {
-    font-size: 12px;
+.ep-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-content: center;
+}
+
+.ep-content img {
+    padding-left: 15px;
+    margin: 0 auto;
 }
