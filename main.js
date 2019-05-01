@@ -7,7 +7,7 @@ function searchTv() {
         .then(blob => blob.json())
         .then(data => {
             const episodes = data["_embedded"].episodes // arrary
-            // console.log(episodes);
+            console.log(episodes);
             const accordion = document.createElement('div')
             accordion.classList.add('episode-list', 'hide', 'accordion')
             const accordionList = document.createElement('ul')
@@ -69,4 +69,6 @@ function toggleContent(e) {
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault()
     searchTv()
+    if(resDisplay.hasChildNodes) resDisplay.innerHTML = ''
+    searchField.value = ''
 })
