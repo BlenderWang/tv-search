@@ -34,7 +34,7 @@ function searchTv() {
                 <h2 class="name">${data.name}</h2>
                 ${data.rating.average ? `<p class="rating">Rating: <span>${data.rating.average}</span></p>` : ''}
                 <br>
-                <button type="button" class="show-episodes">Details</button>
+                ${episodes[0].season ? `<button type="button" class="show-episodes">Details</button>` : '' }
             `
             showBorder.appendChild(accordion)
             resDisplay.appendChild(showBorder)
@@ -49,7 +49,13 @@ function searchTv() {
                 accordionTitles[i].addEventListener('click', toggleContent);
             }
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            resDisplay.innerHTML = `
+                <div class="showBorder errMsg">
+                    Please make sure what you're searching is a TV show
+                </div>`
+        })
 }
 
 function toggleContent(e) {
