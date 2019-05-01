@@ -3,7 +3,7 @@ const searchField = document.querySelector('.search-field')
 const resDisplay = document.querySelector('.resDisplay')
 
 function searchTv() {
-    fetch(`http://api.tvmaze.com/singlesearch/shows?q=${searchField.value}&embed=episodes`)
+    fetch(`https://api.tvmaze.com/singlesearch/shows?q=${searchField.value}&embed=episodes`)
         .then(blob => blob.json())
         .then(data => {
             const episodes = data["_embedded"].episodes // arrary
